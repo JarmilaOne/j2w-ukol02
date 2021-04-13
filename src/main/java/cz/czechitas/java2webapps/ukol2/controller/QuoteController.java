@@ -38,11 +38,19 @@ public class QuoteController {
     @GetMapping("/")
     public ModelAndView viewQuote() {
 
+        String quote;
+
         int nahodneCislo = random.nextInt(6);
-        String citat = quotes.get(nahodneCislo);
+        if (nahodneCislo == 0){
+            nahodneCislo = nahodneCislo + 1;
+            quote = quotes.get(nahodneCislo);
+        }else{
+            quote = quotes.get(nahodneCislo);
+        }
 
         ModelAndView result = new ModelAndView("index");
-        result.addObject("number", citat);
+        result.addObject("number", String.format("background-image: url(/images/%d.jpg)", nahodneCislo));
+        result.addObject("citat", quote);
 
         return result;
     }
