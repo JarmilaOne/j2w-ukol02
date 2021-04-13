@@ -17,8 +17,8 @@ import java.util.Random;
 public class QuoteController {
 
     private final Random random;
-    private ArrayList<String> quotes = new ArrayList<>();
-    private Path p = Paths.get("src/main/resources/citaty.txt");
+    public ArrayList<String> quotes = new ArrayList<>();
+    public Path p = Paths.get("src/main/resources/citaty.txt");
 
 
     public QuoteController() {
@@ -29,8 +29,8 @@ public class QuoteController {
         String line = null;
         while ((line = br.readLine()) != null) {
             quotes.add(line);
-            br.close();
         }
+        br.close();
     }
     catch (IOException e) {e.printStackTrace();}
     }
